@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Safety Hub Nigeria — Building Africa's Pipeline Into Global AI Safety</title>
+  <meta name="description" content="AI Safety Hub Nigeria (ASH Nigeria) is a nonprofit dedicated to building Nigeria and Africa's pipeline into global AI safety research, governance, and policy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#14B8A6;--teal-dark:#0F766E;--teal-deep:#042F2E;--teal-glow:rgba(20,184,166,.18);
+      --bg:#060D0D;--surface:#0C1A1A;--surface2:#112323;--border:rgba(20,184,166,.18);
+      --cream:#F4EFE6;--gold:#D4A853;--text:#E2F0EF;--muted:#7CA8A5;
+      --ff-serif:'DM Serif Display',Georgia,serif;--ff-sans:'Sora',sans-serif;--ff-mono:'JetBrains Mono',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--ff-sans);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--teal-dark);border-radius:2px}
+    .container{max-width:1140px;margin:0 auto;padding:0 2rem}
+    .tag{font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--teal);display:inline-flex;align-items:center;gap:.5rem}
+    .tag::before{content:'';width:20px;height:1px;background:var(--teal)}
+    .section-title{font-family:var(--ff-serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:var(--cream)}
+    .section-title em{font-style:italic;color:var(--teal)}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;font-family:var(--ff-sans);font-size:.88rem;font-weight:600;letter-spacing:.05em;border-radius:4px;cursor:pointer;transition:all .25s ease;border:none}
+    .btn-primary{background:var(--teal);color:var(--bg);border:2px solid var(--teal)}
+    .btn-primary:hover{background:transparent;color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 30px var(--teal-glow)}
+    .btn-ghost{background:transparent;color:var(--teal);border:2px solid var(--border)}
+    .btn-ghost:hover{border-color:var(--teal);background:var(--teal-glow);transform:translateY(-2px)}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 0;transition:background .3s,border-bottom .3s}
+    nav.scrolled{background:rgba(6,13,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:.75rem}
+    .logo-mark{width:38px;height:38px;background:var(--teal);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:1.1rem;color:var(--bg);font-weight:bold}
+    .logo-text{display:flex;flex-direction:column;line-height:1.1}
+    .logo-text strong{font-size:.9rem;font-weight:700;color:var(--cream);letter-spacing:.02em}
+    .logo-text span{font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-family:var(--ff-mono)}
+    .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.84rem;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:.02em}
+    .nav-links a:hover{color:var(--teal)}
+    .nav-cta{margin-left:1rem}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;background:none;border:none}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--teal);transition:all .3s}
+    .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--surface);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-size:1.4rem;font-family:var(--ff-serif);color:var(--cream)}
+    .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;color:var(--muted);cursor:pointer;background:none;border:none}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:8rem 0 5rem;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+    .hero-bg::before{content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.12) 0%,transparent 70%)}
+    .hero-bg::after{content:'';position:absolute;bottom:-10%;left:-5%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.07) 0%,transparent 70%)}
+    .geo-pattern{position:absolute;right:0;top:50%;transform:translateY(-50%);width:45vw;max-width:580px;opacity:.06}
+    .hero-content{position:relative;z-index:2;max-width:700px}
+    .hero-tag{margin-bottom:1.8rem}
+    .hero-title{font-family:var(--ff-serif);font-size:clamp(2.8rem,6vw,5rem);line-height:1.08;color:var(--cream);margin-bottom:1.8rem}
+    .hero-title em{color:var(--teal);font-style:italic}
+    .hero-subtitle{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.8;margin-bottom:2.8rem}
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .hero-stats{display:flex;gap:3rem;margin-top:4.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+    .stat-value{font-family:var(--ff-serif);font-size:2rem;color:var(--teal);display:block}
+    .stat-label{font-size:.78rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-family:var(--ff-mono)}
+    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.72rem;font-family:var(--ff-mono);letter-spacing:.1em;animation:bounce 2s infinite}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+    /* MARQUEE */
+    .marquee-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface);padding:1rem 0;overflow:hidden}
+    .marquee-track{display:flex;gap:4rem;animation:marquee 22s linear infinite;white-space:nowrap}
+    .marquee-item{font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:1.2rem;flex-shrink:0}
+    .marquee-item::after{content:'◆';color:var(--teal);font-size:.5rem}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    section{padding:7rem 0;position:relative}
+
+    /* ABOUT */
+    #about{background:var(--surface)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .about-card{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:2.5rem;position:relative;overflow:hidden}
+    .about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),transparent)}
+    .about-visual{position:relative}
+    .about-accent-box{position:absolute;bottom:-1.5rem;right:-1.5rem;background:var(--teal);color:var(--bg);padding:1.5rem 2rem;border-radius:8px;font-family:var(--ff-serif);font-size:1.1rem;line-height:1.3;box-shadow:0 16px 50px rgba(20,184,166,.35)}
+    .about-accent-box strong{display:block;font-size:2rem}
+    .about-body p{color:var(--muted);margin-bottom:1.2rem;font-size:.97rem;line-height:1.85}
+    .about-body p strong{color:var(--cream);font-weight:600}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+    .value-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1.2rem;transition:border-color .25s,transform .25s}
+    .value-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+    .value-icon{font-size:1.3rem;margin-bottom:.6rem}
+    .value-card h4{font-size:.82rem;font-weight:700;color:var(--teal);letter-spacing:.05em;text-transform:uppercase;font-family:var(--ff-mono);margin-bottom:.4rem}
+    .value-card p{font-size:.8rem;color:var(--muted);line-height:1.6}
+
+    /* WHY */
+    #why{background:var(--bg)}
+    .why-intro{max-width:680px;margin-bottom:4rem}
+    .why-intro p{color:var(--muted);margin-top:1.2rem;line-height:1.85}
+    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem}
+    .why-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;transition:all .25s}
+    .why-card:hover{border-color:var(--teal);background:var(--surface2);transform:translateY(-4px);box-shadow:0 12px 40px var(--teal-glow)}
+    .why-card .icon{font-size:1.5rem;margin-bottom:1rem}
+    .why-card h3{font-size:.9rem;font-weight:700;color:var(--cream);margin-bottom:.6rem}
+    .why-card p{font-size:.83rem;color:var(--muted);line-height:1.7}
+    .callout-bar{background:var(--surface2);border:1px solid var(--teal-dark);border-left:4px solid var(--teal);border-radius:8px;padding:2rem 2.5rem;font-family:var(--ff-serif);font-size:1.25rem;color:var(--cream);line-height:1.6}
+    .callout-bar span{color:var(--teal)}
+
+    /* WHAT */
+    #what{background:var(--surface)}
+    .what-header{margin-bottom:4rem;max-width:600px}
+    .what-header p{color:var(--muted);margin-top:1rem}
+    .programs-list{display:flex;flex-direction:column;gap:4px}
+    .program-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2.5rem;padding:2.2rem 2.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+    .program-item::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal);transform:scaleY(0);transition:transform .3s}
+    .program-item:hover{background:var(--surface2);border-color:var(--teal);transform:translateX(6px)}
+    .program-item:hover::after{transform:scaleY(1)}
+    .prog-number{font-family:var(--ff-serif);font-size:2.2rem;color:var(--teal-dark);font-style:italic}
+    .prog-content h3{font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:.35rem}
+    .prog-content p{font-size:.85rem;color:var(--muted);line-height:1.65;max-width:560px}
+    .prog-tag{font-family:var(--ff-mono);font-size:.68rem;color:var(--teal);background:var(--teal-glow);border:1px solid var(--border);padding:.3rem .7rem;border-radius:20px;white-space:nowrap;letter-spacing:.08em}
+
+    /* SERVE */
+    #serve{background:var(--bg)}
+    .serve-header{max-width:600px;margin-bottom:4rem}
+    .serve-header p{color:var(--muted);margin-top:1rem}
+    .serve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    .serve-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.8rem;transition:all .25s}
+    .serve-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+    .serve-icon{width:42px;height:42px;background:var(--teal-glow);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:1rem}
+    .serve-card h3{font-size:.88rem;font-weight:700;color:var(--cream);margin-bottom:.4rem}
+    .serve-card p{font-size:.8rem;color:var(--muted);line-height:1.65}
+
+    /* VISION */
+    #vision{background:var(--surface);overflow:hidden}
+    .vision-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+    .vision-left p{color:var(--muted);margin-top:1.2rem;line-height:1.85;margin-bottom:2rem}
+    .milestones{margin-top:2.5rem}
+    .milestone{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);align-items:flex-start}
+    .milestone:last-child{border-bottom:none}
+    .milestone-dot{width:12px;height:12px;background:var(--teal);border-radius:50%;flex-shrink:0;margin-top:.4rem;box-shadow:0 0 0 4px var(--teal-glow)}
+    .milestone-content h4{font-size:.9rem;font-weight:700;color:var(--cream);margin-bottom:.3rem}
+    .milestone-content p{font-size:.82rem;color:var(--muted);line-height:1.65}
+    .vision-right{position:sticky;top:7rem}
+    .vision-quote{background:var(--teal-deep);border:1px solid var(--teal-dark);border-radius:12px;padding:3rem;position:relative;overflow:hidden}
+    .vision-quote::before{content:'"';position:absolute;top:-.5rem;left:1.5rem;font-family:var(--ff-serif);font-size:8rem;color:var(--teal);opacity:.15;line-height:1}
+    .vision-quote p{font-family:var(--ff-serif);font-size:1.35rem;color:var(--cream);line-height:1.55;position:relative;z-index:1}
+    .vision-quote cite{display:block;margin-top:1.5rem;font-size:.78rem;font-family:var(--ff-mono);color:var(--teal);letter-spacing:.08em}
+    .partner-logos{margin-top:1.5rem;padding:2rem;background:var(--bg);border:1px solid var(--border);border-radius:10px}
+    .partner-logos h4{font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
+    .partner-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+    .partner-tag{font-size:.75rem;font-family:var(--ff-mono);color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.3rem .7rem;border-radius:4px}
+
+    /* TEAM */
+    #team{background:var(--bg)}
+    .team-header{max-width:600px;margin-bottom:4rem}
+    .team-header p{color:var(--muted);margin-top:1rem}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    .team-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;transition:all .25s;position:relative;overflow:hidden}
+    .team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal),transparent);opacity:0;transition:opacity .25s}
+    .team-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+    .team-card:hover::before{opacity:1}
+    .team-card.featured{grid-column:span 3;display:flex;gap:2.5rem;align-items:center;background:var(--teal-deep);border-color:var(--teal-dark)}
+    .team-card.featured::before{opacity:1}
+    .team-avatar{width:52px;height:52px;background:var(--teal-glow);border:2px solid var(--teal-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:1.3rem;color:var(--teal);margin-bottom:1rem;flex-shrink:0}
+    .team-card.featured .team-avatar{width:64px;height:64px;margin-bottom:0}
+    .team-card h3{font-size:.95rem;font-weight:700;color:var(--cream);margin-bottom:.25rem}
+    .team-card .role{font-family:var(--ff-mono);font-size:.72rem;color:var(--teal);letter-spacing:.06em;margin-bottom:.7rem}
+    .team-card p{font-size:.8rem;color:var(--muted);line-height:1.65}
+
+    /* INVOLVE */
+    #involve{background:var(--surface)}
+    .involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .involve-card{border:1px solid var(--border);border-radius:12px;padding:2.5rem 2rem;transition:all .3s;position:relative}
+    .involve-card:hover{border-color:var(--teal);background:var(--teal-glow);transform:translateY(-4px)}
+    .involve-card .ic-icon{font-size:1.8rem;margin-bottom:1.2rem}
+    .involve-card h3{font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:.6rem}
+    .involve-card p{font-size:.85rem;color:var(--muted);line-height:1.7}
+
+    /* CONTACT */
+    #contact{background:var(--teal-deep);position:relative;overflow:hidden}
+    #contact::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.15) 0%,transparent 70%);pointer-events:none}
+    .contact-inner{position:relative;z-index:1;text-align:center;max-width:640px;margin:0 auto}
+    .contact-inner .section-title{margin-bottom:1rem}
+    .contact-inner p{color:var(--muted);margin-bottom:2.5rem;font-size:1rem}
+    .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .contact-info{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap}
+    .contact-item{display:flex;align-items:center;gap:.6rem;font-family:var(--ff-mono);font-size:.8rem;color:var(--muted)}
+
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 0}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-copy{font-size:.78rem;color:var(--muted);font-family:var(--ff-mono)}
+    .footer-links{display:flex;gap:1.5rem;list-style:none}
+    .footer-links a{font-size:.78rem;color:var(--muted);font-family:var(--ff-mono);letter-spacing:.04em;transition:color .2s}
+    .footer-links a:hover{color:var(--teal)}
+
+    /* ANIMATIONS */
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .fade-up.visible{opacity:1;transform:none}
+    .fade-up:nth-child(2){transition-delay:.1s}.fade-up:nth-child(3){transition-delay:.2s}
+    .fade-up:nth-child(4){transition-delay:.3s}.fade-up:nth-child(5){transition-delay:.4s}
+    .fade-up:nth-child(6){transition-delay:.5s}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .nav-links,.nav-cta{display:none}.hamburger{display:flex}
+      .about-grid{grid-template-columns:1fr;gap:3rem}
+      .why-grid{grid-template-columns:1fr 1fr}
+      .serve-grid{grid-template-columns:1fr 1fr}
+      .team-grid{grid-template-columns:1fr 1fr}
+      .team-card.featured{grid-column:span 2;flex-direction:column}
+      .vision-inner{grid-template-columns:1fr}.vision-right{position:static}
+      .involve-grid{grid-template-columns:1fr 1fr}
+      .program-item{grid-template-columns:60px 1fr}.prog-tag{display:none}
+      .values-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      .why-grid,.serve-grid,.involve-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}.team-card.featured{grid-column:span 1}
+      .hero-stats{flex-wrap:wrap;gap:1.5rem}.values-grid{grid-template-columns:1fr}
+      .program-item{grid-template-columns:1fr;gap:.5rem}.prog-number{font-size:1.2rem}
+      .contact-info{flex-direction:column;align-items:center;gap:1rem}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-logo">
+      <div class="logo-mark">A</div>
+      <div class="logo-text">
+        <strong>ASH Nigeria</strong>
+        <span>AI Safety Hub</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#why">Why It Matters</a></li>
+      <li><a href="#what">Our Work</a></li>
+      <li><a href="#serve">Who We Serve</a></li>
+      <li><a href="#vision">Vision</a></li>
+      <li><a href="#team">Team</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary nav-cta">Get Involved</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#why" class="mobile-link">Why It Matters</a>
+  <a href="#what" class="mobile-link">Our Work</a>
+  <a href="#serve" class="mobile-link">Who We Serve</a>
+  <a href="#vision" class="mobile-link">Vision</a>
+  <a href="#team" class="mobile-link">Team</a>
+  <a href="#contact" class="btn btn-primary">Get Involved</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <svg class="geo-pattern" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="250" cy="250" r="240" stroke="#14B8A6" stroke-width="1"/>
+    <circle cx="250" cy="250" r="180" stroke="#14B8A6" stroke-width="1"/>
+    <circle cx="250" cy="250" r="120" stroke="#14B8A6" stroke-width="1"/>
+    <circle cx="250" cy="250" r="60" stroke="#14B8A6" stroke-width="1"/>
+    <line x1="10" y1="250" x2="490" y2="250" stroke="#14B8A6" stroke-width="1"/>
+    <line x1="250" y1="10" x2="250" y2="490" stroke="#14B8A6" stroke-width="1"/>
+    <line x1="80" y1="80" x2="420" y2="420" stroke="#14B8A6" stroke-width="1"/>
+    <line x1="420" y1="80" x2="80" y2="420" stroke="#14B8A6" stroke-width="1"/>
+    <polygon points="250,10 490,490 10,490" stroke="#14B8A6" stroke-width="1" fill="none"/>
+    <polygon points="250,490 490,10 10,10" stroke="#14B8A6" stroke-width="1" fill="none"/>
+    <rect x="130" y="130" width="240" height="240" stroke="#14B8A6" stroke-width="1" fill="none" transform="rotate(45 250 250)"/>
+    <circle cx="250" cy="10" r="5" fill="#14B8A6"/>
+    <circle cx="250" cy="490" r="5" fill="#14B8A6"/>
+    <circle cx="10" cy="250" r="5" fill="#14B8A6"/>
+    <circle cx="490" cy="250" r="5" fill="#14B8A6"/>
+    <circle cx="80" cy="80" r="5" fill="#14B8A6"/>
+    <circle cx="420" cy="80" r="5" fill="#14B8A6"/>
+    <circle cx="80" cy="420" r="5" fill="#14B8A6"/>
+    <circle cx="420" cy="420" r="5" fill="#14B8A6"/>
+  </svg>
+  <div class="container">
+    <div class="hero-content">
+      <div class="tag hero-tag">Lagos, Nigeria · Founded 2025</div>
+      <h1 class="hero-title">Building Africa's Pipeline<br/>Into <em>Global AI Safety</em></h1>
+      <p class="hero-subtitle">We find, train, and connect exceptional Nigerian and African talent to work on the technical, governance, and policy challenges that will determine whether advanced AI is safe for everyone. Because the people solving these problems must include Africa's best minds.</p>
+      <div class="hero-actions">
+        <a href="#what" class="btn btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Explore Our Work
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get Involved</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-value">2025</span><span class="stat-label">Founded</span></div>
+        <div class="stat-item"><span class="stat-value">6+</span><span class="stat-label">University Hubs</span></div>
+        <div class="stat-item"><span class="stat-value">5</span><span class="stat-label">Core Programmes</span></div>
+        <div class="stat-item"><span class="stat-value">Pan-</span><span class="stat-label">African Scope</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">AI Safety Research</span><span class="marquee-item">Biosecurity Governance</span>
+    <span class="marquee-item">APEx Programme</span><span class="marquee-item">University Hub Network</span>
+    <span class="marquee-item">AI Alignment</span><span class="marquee-item">Global AI Policy</span>
+    <span class="marquee-item">African Representation</span><span class="marquee-item">Career Pathways</span>
+    <span class="marquee-item">Nigerian Talent</span><span class="marquee-item">Field-Building</span>
+    <span class="marquee-item">AI Safety Research</span><span class="marquee-item">Biosecurity Governance</span>
+    <span class="marquee-item">APEx Programme</span><span class="marquee-item">University Hub Network</span>
+    <span class="marquee-item">AI Alignment</span><span class="marquee-item">Global AI Policy</span>
+    <span class="marquee-item">African Representation</span><span class="marquee-item">Career Pathways</span>
+    <span class="marquee-item">Nigerian Talent</span><span class="marquee-item">Field-Building</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card">
+          <div style="font-family:var(--ff-serif);font-size:1.1rem;color:var(--cream);line-height:1.7;margin-bottom:1.5rem;">"The decisions made about advanced AI in the next decade will shape how societies function for generations. Nigeria and Africa must be in the room where those decisions are made."</div>
+          <div style="font-family:var(--ff-mono);font-size:.72rem;color:var(--muted);letter-spacing:.08em;">— ASH Nigeria Founding Vision</div>
+          <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;gap:2rem;">
+            <div>
+              <div style="font-family:var(--ff-serif);font-size:1.6rem;color:var(--teal);">30+</div>
+              <div style="font-size:.72rem;color:var(--muted);font-family:var(--ff-mono);letter-spacing:.05em;text-transform:uppercase;">Govts backing the 2026 AI Safety Report</div>
+            </div>
+            <div>
+              <div style="font-family:var(--ff-serif);font-size:1.6rem;color:var(--teal);">~0</div>
+              <div style="font-size:.72rem;color:var(--muted);font-family:var(--ff-mono);letter-spacing:.05em;text-transform:uppercase;">African experiences in global AI evidence base</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-accent-box"><strong>Hub</strong>Model</div>
+      </div>
+      <div class="about-body">
+        <div class="tag" style="margin-bottom:1.2rem;">Who We Are</div>
+        <h2 class="section-title">Nigeria's Central <em>AI Safety</em> Organisation</h2>
+        <br/>
+        <p>AI Safety Hub Nigeria (ASH Nigeria) is a nonprofit dedicated to building Nigeria and Africa's pipeline into global AI safety, biosecurity research, and governance — ensuring that the people shaping the future of AI include Africa's best minds.</p>
+        <p><strong>The word 'Hub' in our name is not incidental.</strong> It describes how we work. ASH Nigeria is the central organisation, but our reach extends into universities across Nigeria through a growing network of campus-based AI safety hubs.</p>
+        <p>We work in two directions: preparing Nigerian and African talent to enter global AI safety careers, and bringing the world's leading AI safety organisations and training programmes closer to Nigeria.</p>
+        <div class="values-grid">
+          <div class="value-card fade-up"><div class="value-icon">🌍</div><h4>Inclusion</h4><p>Exceptional talent exists across Nigeria and Africa. Our role is to build the infrastructure that gives it a path.</p></div>
+          <div class="value-card fade-up"><div class="value-icon">🔬</div><h4>Rigour</h4><p>Evidence-based, intellectually honest, built on the best available research in AI safety.</p></div>
+          <div class="value-card fade-up"><div class="value-icon">🤝</div><h4>Collaboration</h4><p>We are a bridge organisation. We connect, refer, partner, and build alongside the global AI safety community.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <div class="why-intro">
+      <div class="tag" style="margin-bottom:1.2rem;">Why This Work Matters</div>
+      <h2 class="section-title">AI is Already Making Real Decisions<br/>That Affect <em>Real Nigerians</em></h2>
+      <p>AI systems built elsewhere, trained on data that does not represent Nigerian users, are deployed here without oversight. When they fail, the consequences fall on Nigerians.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-up"><div class="icon">💳</div><h3>Credit &amp; Fintech</h3><p>AI making credit and loan approval decisions through fintech platforms, often without Nigerian data representation.</p></div>
+      <div class="why-card fade-up"><div class="icon">🏥</div><h3>Healthcare</h3><p>Healthcare triage and medical recommendations driven by models trained on non-African clinical data.</p></div>
+      <div class="why-card fade-up"><div class="icon">📱</div><h3>Content Moderation</h3><p>Social media content moderation failing to understand Nigerian languages, culture, and context.</p></div>
+      <div class="why-card fade-up"><div class="icon">👔</div><h3>Hiring &amp; Recruitment</h3><p>Hiring screening tools that may encode biases against African candidates and their contexts.</p></div>
+      <div class="why-card fade-up"><div class="icon">🌾</div><h3>Agriculture</h3><p>Agricultural advice and resource allocation systems misaligned with Nigerian farming realities.</p></div>
+      <div class="why-card fade-up"><div class="icon">🌐</div><h3>Global Governance Gap</h3><p>The frameworks governing AI globally do not yet reflect the full range of humanity they are meant to protect.</p></div>
+    </div>
+    <div class="callout-bar">The 2026 International AI Safety Report, backed by over 30 governments, confirmed that the evidence base for global AI policy barely includes <span>African deployment experiences, African research, or African institutions.</span> This is not just an equity concern — it is a quality concern.</div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section id="what">
+  <div class="container">
+    <div class="what-header">
+      <div class="tag" style="margin-bottom:1.2rem;">What We Do</div>
+      <h2 class="section-title">Five Programmes.<br/>One <em>Complete Ecosystem.</em></h2>
+      <p>Identifying talent, building knowledge, creating community, connecting people to global opportunities, and shaping policy — all interconnected.</p>
+    </div>
+    <div class="programs-list">
+      <div class="program-item fade-up">
+        <div class="prog-number">01</div>
+        <div class="prog-content">
+          <h3>APEx — AI Safety Pathways Exploration Programme</h3>
+          <p>Our flagship free, four-week virtual curriculum for Nigerian tertiary students and early-career professionals. Covers AI safety fundamentals, technical alignment, governance &amp; policy, and career pathways — with annotated reading lists, reflection exercises, and one-to-one application coaching for global fellowships.</p>
+        </div>
+        <div class="prog-tag">Flagship · Free</div>
+      </div>
+      <div class="program-item fade-up">
+        <div class="prog-number">02</div>
+        <div class="prog-content">
+          <h3>University Hub Network</h3>
+          <p>Campus-based AI safety hubs embedded inside Nigerian universities. Starting with 4–6 institutions in Year 1, each hub runs regular AI safety meetups, delivers local APEx cohorts, and functions as an access point for global programme applications. Led by trained student Hub Leads.</p>
+        </div>
+        <div class="prog-tag">Field-Building</div>
+      </div>
+      <div class="program-item fade-up">
+        <div class="prog-number">03</div>
+        <div class="prog-content">
+          <h3>Content &amp; Public Resources</h3>
+          <p>Weekly publications across four pillars: Global AI Watch, What We Are Reading, Education posts using Nigerian scenarios, and curated Opportunities (fellowships, internships). All freely available on Substack.</p>
+        </div>
+        <div class="prog-tag">Public · Free</div>
+      </div>
+      <div class="program-item fade-up">
+        <div class="prog-number">04</div>
+        <div class="prog-content">
+          <h3>Events &amp; Community</h3>
+          <p>Virtual and in-person speaker sessions, fireside chats with global AI safety researchers, reading group convenings, and public seminars. Working toward Nigeria's first national AI safety hub convening.</p>
+        </div>
+        <div class="prog-tag">Community</div>
+      </div>
+      <div class="program-item fade-up">
+        <div class="prog-number">05</div>
+        <div class="prog-content">
+          <h3>Global Partnership Development</h3>
+          <p>Building formal relationships with MATS, Anthropic Fellows Program, IAPS, Cambridge ERA:AI, ARENA, ML4Good and more. Hosting bootcamps in Nigeria and seeking dedicated opportunities and scholarships for hub members.</p>
+        </div>
+        <div class="prog-tag">Partnerships</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="serve">
+  <div class="container">
+    <div class="serve-header">
+      <div class="tag" style="margin-bottom:1.2rem;">Who We Serve</div>
+      <h2 class="section-title">Open to Everyone.<br/><em>No Prior Expertise</em> Required.</h2>
+      <p>AI safety needs researchers, yes — but also policymakers, communicators, lawyers, economists, ethicists, and institution-builders. We welcome all.</p>
+    </div>
+    <div class="serve-grid">
+      <div class="serve-card fade-up"><div class="serve-icon">🎓</div><h3>Tertiary Students</h3><p>STEM, social science, law, policy, and related fields who want to understand AI safety and explore it as a career.</p></div>
+      <div class="serve-card fade-up"><div class="serve-icon">💼</div><h3>Early-Career Professionals</h3><p>Graduates and young professionals in their first few years of work considering a transition into AI safety or governance.</p></div>
+      <div class="serve-card fade-up"><div class="serve-icon">🏛️</div><h3>Academics &amp; Faculty</h3><p>Lecturers and researchers wanting to understand AI safety and integrate it into their teaching or research.</p></div>
+      <div class="serve-card fade-up"><div class="serve-icon">⚖️</div><h3>Policymakers &amp; Civil Servants</h3><p>Nigerian government officials and public sector professionals making or influencing decisions about AI.</p></div>
+      <div class="serve-card fade-up"><div class="serve-icon">💻</div><h3>Technologists &amp; Practitioners</h3><p>Software engineers, data scientists, and AI developers who want to build more responsibly and safely.</p></div>
+      <div class="serve-card fade-up"><div class="serve-icon">🌱</div><h3>Civil Society Organisations</h3><p>NGOs, advocacy groups, and community organisations engaging with technology and its effects on Nigerian society.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision">
+  <div class="container">
+    <div class="vision-inner">
+      <div class="vision-left">
+        <div class="tag" style="margin-bottom:1.2rem;">Where We're Headed</div>
+        <h2 class="section-title">Nigeria First.<br/>Then <em>All of Africa.</em></h2>
+        <p>ASH Nigeria is an early-stage organisation with a clear long-term vision. In the near term, our focus is on Nigeria. Over the medium term, we are building toward three strategic milestones.</p>
+        <div class="milestones">
+          <div class="milestone fade-up"><div class="milestone-dot"></div><div class="milestone-content"><h4>National AI Safety Hubs Network</h4><p>Hubs in tertiary institutions across Nigeria creating a country-wide community of practice, with trained student leads at every institution.</p></div></div>
+          <div class="milestone fade-up"><div class="milestone-dot"></div><div class="milestone-content"><h4>Formalised Global Partnerships</h4><p>Partnerships with global AI safety organisations bringing training programmes — including ARENA and ML4Good bootcamps — directly to Nigeria without requiring international travel.</p></div></div>
+          <div class="milestone fade-up"><div class="milestone-dot"></div><div class="milestone-content"><h4>African Voice at Geneva 2027</h4><p>Meaningful African representation at the Geneva 2027 international AI governance summit, where the rules for advanced AI will be negotiated.</p></div></div>
+          <div class="milestone fade-up"><div class="milestone-dot"></div><div class="milestone-content"><h4>Pan-African Hub Network</h4><p>ASH Nigeria as the founding node of an African AI safety hub network. In conversations with community builders in Ghana, Kenya, and South Africa.</p></div></div>
+        </div>
+      </div>
+      <div class="vision-right">
+        <div class="vision-quote">
+          <p>A world where African researchers, policymakers, and governance professionals are active shapers of how AI develops — not passive recipients of decisions made elsewhere.</p>
+          <cite>— ASH Nigeria Vision Statement</cite>
+        </div>
+        <div class="partner-logos">
+          <h4>Global Programmes We Connect To</h4>
+          <div class="partner-tags">
+            <span class="partner-tag">MATS</span><span class="partner-tag">Anthropic Fellows</span>
+            <span class="partner-tag">IAPS</span><span class="partner-tag">Cambridge ERA:AI</span>
+            <span class="partner-tag">ARENA</span><span class="partner-tag">ML4Good</span>
+            <span class="partner-tag">80,000 Hours</span><span class="partner-tag">BlueDot</span>
+            <span class="partner-tag">LessWrong</span><span class="partner-tag">EA Forum</span>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.8rem;">
+          <h4 style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Our Live Resources</h4>
+          <div style="display:flex;flex-direction:column;gap:.7rem;">
+            <a href="https://aisafetyhubng.github.io/apex-program" target="_blank" style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--teal);font-family:var(--ff-mono);">↗ APEx Programme Page</a>
+            <a href="https://aisafetyhubng.github.io/apex-curriculum" target="_blank" style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--teal);font-family:var(--ff-mono);">↗ APEx Curriculum</a>
+            <a href="https://substack.com/@aisafetyhubnigeria" target="_blank" style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--teal);font-family:var(--ff-mono);">↗ Newsletter on Substack</a>
+            <a href="https://aisafetyhubng.github.io/apex-survey" target="_blank" style="display:flex;align-items:center;gap:.6rem;font-size:.83rem;color:var(--teal);font-family:var(--ff-mono);">↗ Take the APEx Survey</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="team-header">
+      <div class="tag" style="margin-bottom:1.2rem;">Our Team</div>
+      <h2 class="section-title">A Six-Person Leadership Team<br/>Covering the <em>Full Range</em> of Our Work.</h2>
+      <p>Focused and complementary — each role owns a clear area of responsibility, all coordinating through the Executive Lead.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card featured fade-up">
+        <div class="team-avatar" style="font-size:1.6rem;">⭐</div>
+        <div>
+          <div class="role">Executive Lead</div>
+          <h3>Executive Leadership</h3>
+          <p>Directs ASH Nigeria's overall strategy, vision, and operations. Responsible for setting organisational direction, building relationships with global AI safety organisations and funders, representing ASH Nigeria externally, and leading the organisation's long-term planning and African representation in global AI governance processes.</p>
+        </div>
+      </div>
+      <div class="team-card fade-up"><div class="team-avatar">📣</div><div class="role">Communications &amp; Community Lead</div><h3>Communications &amp; Community</h3><p>Produces and publishes weekly content across all four pillars, manages LinkedIn, Substack, and Instagram, and grows and sustains the online community. Ensures ASH Nigeria's voice is consistent, intellectually serious, and accessible.</p></div>
+      <div class="team-card fade-up"><div class="team-avatar">🔬</div><div class="role">Research &amp; Technical Lead</div><h3>Research &amp; Technical</h3><p>Curates and annotates APEx reading lists, produces technical paper explainers, maintains relationships with AI safety researchers globally, and ensures all educational content is accurate and rigorous.</p></div>
+      <div class="team-card fade-up"><div class="team-avatar">📅</div><div class="role">Programmes &amp; Events Coordinator</div><h3>Programmes &amp; Events</h3><p>Responsible for delivering APEx cohorts, supporting university hub leads, organising speaker sessions and public events, managing participant experience, and working toward the national AI safety convening.</p></div>
+      <div class="team-card fade-up"><div class="team-avatar">⚖️</div><div class="role">Policy &amp; Advocacy Lead</div><h3>Policy &amp; Advocacy</h3><p>Tracks Nigerian and African AI policy developments, builds relationships with government institutions and civil society, develops ASH Nigeria's governance positions, and manages the organisation's path toward multilateral AI governance participation.</p></div>
+      <div class="team-card fade-up"><div class="team-avatar">⚙️</div><div class="role">Operations &amp; Finance Lead</div><h3>Operations &amp; Finance</h3><p>Ensures ASH Nigeria functions as a well-run, accountable organisation through financial management, administrative operations, compliance, record-keeping, and supporting the Executive Director with internal processes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section id="involve" style="background:var(--surface);">
+  <div class="container">
+    <div style="max-width:600px;margin-bottom:1rem;">
+      <div class="tag" style="margin-bottom:1.2rem;">Get Involved</div>
+      <h2 class="section-title">There is a Role for <em>Everyone</em> in This Work.</h2>
+    </div>
+    <div class="involve-grid">
+      <div class="involve-card fade-up"><div class="ic-icon">🎓</div><h3>For Students &amp; Professionals</h3><p>Apply for APEx, join a university hub near you, subscribe to our Substack newsletter, and follow our content on LinkedIn. No prior expertise required — curiosity is enough.</p></div>
+      <div class="involve-card fade-up"><div class="ic-icon">🏫</div><h3>For Universities</h3><p>Interested in hosting an ASH Nigeria university hub? We train and support student hub leads, provide curriculum and resources, and connect your institution to global AI safety pathways.</p></div>
+      <div class="involve-card fade-up"><div class="ic-icon">🌐</div><h3>For Mentors &amp; Practitioners</h3><p>AI safety practitioners in technical, governance, or communications roles can contribute guest sessions to APEx, mentor programme alumni, or join our fireside chat series.</p></div>
+      <div class="involve-card fade-up"><div class="ic-icon">🤝</div><h3>For Partner Organisations</h3><p>Organisations in AI safety, biosecurity governance, or capacity building in the Global South are invited to explore referral agreements, joint programming, or shared resources.</p></div>
+      <div class="involve-card fade-up"><div class="ic-icon">💰</div><h3>For Funders</h3><p>We are seeking philanthropic support for our Year 1 operations and programme delivery. The cost of building a serious AI safety pipeline in Nigeria is low relative to the potential impact.</p></div>
+      <div class="involve-card fade-up"><div class="ic-icon">📋</div><h3>Take the APEx Survey</h3><p>Fill out our survey at <a href="https://aisafetyhubng.github.io/apex-survey" target="_blank" style="color:var(--teal);">aisafetyhubng.github.io/apex-survey</a>. Your responses directly shape how we build the curriculum.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="tag" style="margin-bottom:1.2rem;justify-content:center;">Contact Us</div>
+      <h2 class="section-title">Ready to<br/><em>Join the Movement?</em></h2>
+      <p>Whether you are a student, university administrator, researcher, or organisation — we want to hear from you.</p>
+      <div class="contact-links">
+        <a href="mailto:aisafetyhubng@gmail.com" class="btn btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Send Us an Email
+        </a>
+        <a href="https://www.linkedin.com/company/ai-safety-hub-nigeria" target="_blank" class="btn btn-ghost">LinkedIn</a>
+        <a href="https://substack.com/@aisafetyhubnigeria" target="_blank" class="btn btn-ghost">Substack</a>
+      </div>
+      <div class="contact-info">
+        <div class="contact-item">✉ aisafetyhubng@gmail.com</div>
+        <div class="contact-item">📍 Lagos, Nigeria</div>
+        <div class="contact-item">📷 @aisafetyhubng</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2025 AI Safety Hub Nigeria · Lagos, Nigeria · Building Africa's Pipeline into Global AI Safety</div>
+    <ul class="footer-links">
+      <li><a href="https://substack.com/@aisafetyhubnigeria" target="_blank">Newsletter</a></li>
+      <li><a href="https://aisafetyhubng.github.io/apex-program" target="_blank">APEx</a></li>
+      <li><a href="https://www.linkedin.com/company/ai-safety-hub-nigeria" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:aisafetyhubng@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
