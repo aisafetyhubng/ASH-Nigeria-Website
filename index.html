@@ -37,37 +37,55 @@
     nav.scrolled{background:rgba(6,13,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
     .nav-inner{display:flex;align-items:center;justify-content:space-between}
     .nav-logo{display:flex;align-items:center;gap:.75rem}
-    .logo-mark{width:38px;height:38px;background:var(--teal);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-serif);font-size:1.1rem;color:var(--bg);font-weight:bold}
+
+    /* LOGO — replace the img src with your logo file */
+    .logo-mark{width:38px;height:38px;border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--teal)}
+    .logo-mark img{width:100%;height:100%;object-fit:contain}
+    .logo-mark .logo-fallback{font-family:var(--ff-serif);font-size:1.1rem;color:var(--bg);font-weight:bold;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+
     .logo-text{display:flex;flex-direction:column;line-height:1.1}
     .logo-text strong{font-size:.9rem;font-weight:700;color:var(--cream);letter-spacing:.02em}
     .logo-text span{font-size:.68rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-family:var(--ff-mono)}
-    .nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
-    .nav-links a{font-size:.84rem;font-weight:500;color:var(--muted);transition:color .2s;letter-spacing:.02em}
-    .nav-links a:hover{color:var(--teal)}
-    .nav-cta{margin-left:1rem}
-    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;background:none;border:none}
-    .hamburger span{display:block;width:24px;height:2px;background:var(--teal);transition:all .3s}
+
+    /* DROPDOWN NAV */
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .nav-dropdown{position:relative}
+    .nav-dropdown-btn{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);font-family:var(--ff-sans);font-size:.84rem;font-weight:500;cursor:pointer;transition:all .2s;letter-spacing:.02em}
+    .nav-dropdown-btn:hover,.nav-dropdown-btn.open{color:var(--teal);border-color:var(--teal);background:var(--teal-glow)}
+    .nav-dropdown-btn svg{transition:transform .25s}
+    .nav-dropdown-btn.open svg{transform:rotate(180deg)}
+    .nav-dropdown-menu{position:absolute;top:calc(100% + .6rem);right:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.5rem;min-width:200px;display:none;flex-direction:column;gap:.1rem;box-shadow:0 16px 40px rgba(0,0,0,.4);z-index:200}
+    .nav-dropdown-menu.open{display:flex}
+    .nav-dropdown-menu a{padding:.7rem 1rem;font-size:.84rem;color:var(--muted);border-radius:5px;transition:all .2s;font-weight:500}
+    .nav-dropdown-menu a:hover{color:var(--teal);background:var(--teal-glow)}
+
+    /* MOBILE MENU */
     .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--surface);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
     .mobile-menu.open{display:flex}
     .mobile-menu a{font-size:1.4rem;font-family:var(--ff-serif);color:var(--cream)}
     .mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;color:var(--muted);cursor:pointer;background:none;border:none}
 
     /* HERO */
-    #hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:8rem 0 5rem;overflow:hidden}
+    #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;padding-bottom:5rem;overflow:hidden}
     .hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-    .hero-bg::before{content:'';position:absolute;top:-20%;right:-10%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.12) 0%,transparent 70%)}
-    .hero-bg::after{content:'';position:absolute;bottom:-10%;left:-5%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,.07) 0%,transparent 70%)}
-    .geo-pattern{position:absolute;right:0;top:50%;transform:translateY(-50%);width:45vw;max-width:580px;opacity:.06}
-    .hero-content{position:relative;z-index:2;max-width:700px}
+    .hero-bg::after{content:'';position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(to top,var(--bg) 30%,transparent 100%);z-index:1}
+
+    /* HERO IMAGE */
+    .hero-image{position:absolute;inset:0;z-index:0}
+    .hero-image img{width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.55;filter:saturate(0.7)}
+    .hero-image-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,13,.3) 0%,rgba(6,13,13,.5) 40%,rgba(6,13,13,.95) 100%)}
+
+    .geo-pattern{position:absolute;right:0;top:50%;transform:translateY(-50%);width:45vw;max-width:580px;opacity:.04;z-index:2}
+    .hero-content{position:relative;z-index:3;max-width:700px;padding-top:0}
     .hero-tag{margin-bottom:1.8rem}
     .hero-title{font-family:var(--ff-serif);font-size:clamp(2.8rem,6vw,5rem);line-height:1.08;color:var(--cream);margin-bottom:1.8rem}
     .hero-title em{color:var(--teal);font-style:italic}
     .hero-subtitle{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.8;margin-bottom:2.8rem}
     .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-    .hero-stats{display:flex;gap:3rem;margin-top:4.5rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+    .hero-stats{display:flex;gap:3rem;margin-top:4.5rem;padding-top:2.5rem;border-top:1px solid var(--border);flex-wrap:wrap}
     .stat-value{font-family:var(--ff-serif);font-size:2rem;color:var(--teal);display:block}
     .stat-label{font-size:.78rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;font-family:var(--ff-mono)}
-    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.72rem;font-family:var(--ff-mono);letter-spacing:.1em;animation:bounce 2s infinite}
+    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--muted);font-size:.72rem;font-family:var(--ff-mono);letter-spacing:.1em;animation:bounce 2s infinite;z-index:3}
     @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
     /* MARQUEE */
@@ -114,7 +132,7 @@
     .what-header{margin-bottom:4rem;max-width:600px}
     .what-header p{color:var(--muted);margin-top:1rem}
     .programs-list{display:flex;flex-direction:column;gap:4px}
-    .program-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2.5rem;padding:2.2rem 2.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+    .program-item{display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:2.5rem;padding:2.2rem 2.5rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;transition:all .3s;position:relative;overflow:hidden}
     .program-item::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal);transform:scaleY(0);transition:transform .3s}
     .program-item:hover{background:var(--surface2);border-color:var(--teal);transform:translateX(6px)}
     .program-item:hover::after{transform:scaleY(1)}
@@ -174,7 +192,7 @@
     /* INVOLVE */
     #involve{background:var(--surface)}
     .involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-    .involve-card{border:1px solid var(--border);border-radius:12px;padding:2.5rem 2rem;transition:all .3s;position:relative}
+    .involve-card{border:1px solid var(--border);border-radius:12px;padding:2.5rem 2rem;transition:all .3s}
     .involve-card:hover{border-color:var(--teal);background:var(--teal-glow);transform:translateY(-4px)}
     .involve-card .ic-icon{font-size:1.8rem;margin-bottom:1.2rem}
     .involve-card h3{font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:.6rem}
@@ -207,7 +225,6 @@
 
     /* RESPONSIVE */
     @media(max-width:900px){
-      .nav-links,.nav-cta{display:none}.hamburger{display:flex}
       .about-grid{grid-template-columns:1fr;gap:3rem}
       .why-grid{grid-template-columns:1fr 1fr}
       .serve-grid{grid-template-columns:1fr 1fr}
@@ -229,44 +246,64 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="navbar">
   <div class="container nav-inner">
     <a href="#hero" class="nav-logo">
-      <div class="logo-mark">A</div>
+      <div class="logo-mark">
+        <!-- TO ADD YOUR LOGO:
+             1. Upload your logo file (e.g. logo.png) to the same folder as index.html in GitHub
+             2. Replace the fallback div below with: <img src="logo.png" alt="ASH Nigeria Logo" />
+        -->
+        <div class="logo-fallback">A</div>
+      </div>
       <div class="logo-text">
         <strong>ASH Nigeria</strong>
         <span>AI Safety Hub</span>
       </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#why">Why It Matters</a></li>
-      <li><a href="#what">Our Work</a></li>
-      <li><a href="#serve">Who We Serve</a></li>
-      <li><a href="#vision">Vision</a></li>
-      <li><a href="#team">Team</a></li>
-    </ul>
-    <a href="#contact" class="btn btn-primary nav-cta">Get Involved</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+
+    <div class="nav-right">
+      <!-- Dropdown nav -->
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" id="navDropdownBtn">
+          Menu
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="navDropdownMenu">
+          <a href="#about">About</a>
+          <a href="#why">Why It Matters</a>
+          <a href="#what">Our Work</a>
+          <a href="#serve">Who We Serve</a>
+          <a href="#vision">Vision</a>
+          <a href="#team">Team</a>
+          <a href="#involve">Get Involved</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-primary">Get Involved</a>
+    </div>
   </div>
 </nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" id="mobileClose">✕</button>
-  <a href="#about" class="mobile-link">About</a>
-  <a href="#why" class="mobile-link">Why It Matters</a>
-  <a href="#what" class="mobile-link">Our Work</a>
-  <a href="#serve" class="mobile-link">Who We Serve</a>
-  <a href="#vision" class="mobile-link">Vision</a>
-  <a href="#team" class="mobile-link">Team</a>
-  <a href="#contact" class="btn btn-primary">Get Involved</a>
-</div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
+
+  <!-- HERO IMAGE
+       TO USE YOUR OWN IMAGE:
+       1. Upload your image file (e.g. hero.jpg) to the same GitHub folder as index.html
+       2. Change the src below from the Unsplash URL to: src="hero.jpg"
+  -->
+  <div class="hero-image">
+    <img
+      src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1400&q=80"
+      alt="Young African researchers working on AI"
+      onerror="this.parentElement.style.background='linear-gradient(135deg,#042F2E,#060D0D)'"
+    />
+    <div class="hero-image-overlay"></div>
+  </div>
+
   <svg class="geo-pattern" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="250" cy="250" r="240" stroke="#14B8A6" stroke-width="1"/>
     <circle cx="250" cy="250" r="180" stroke="#14B8A6" stroke-width="1"/>
@@ -288,9 +325,10 @@
     <circle cx="80" cy="420" r="5" fill="#14B8A6"/>
     <circle cx="420" cy="420" r="5" fill="#14B8A6"/>
   </svg>
+
   <div class="container">
     <div class="hero-content">
-      <div class="tag hero-tag">Lagos, Nigeria · Founded 2025</div>
+      <div class="tag hero-tag">Nigeria · Founded 2025</div>
       <h1 class="hero-title">Building Africa's Pipeline<br/>Into <em>Global AI Safety</em></h1>
       <p class="hero-subtitle">We find, train, and connect exceptional Nigerian and African talent to work on the technical, governance, and policy challenges that will determine whether advanced AI is safe for everyone. Because the people solving these problems must include Africa's best minds.</p>
       <div class="hero-actions">
@@ -399,42 +437,27 @@
     <div class="programs-list">
       <div class="program-item fade-up">
         <div class="prog-number">01</div>
-        <div class="prog-content">
-          <h3>APEx — AI Safety Pathways Exploration Programme</h3>
-          <p>Our flagship free, four-week virtual curriculum for Nigerian tertiary students and early-career professionals. Covers AI safety fundamentals, technical alignment, governance &amp; policy, and career pathways — with annotated reading lists, reflection exercises, and one-to-one application coaching for global fellowships.</p>
-        </div>
+        <div class="prog-content"><h3>APEx — AI Safety Pathways Exploration Programme</h3><p>Our flagship free, four-week virtual curriculum for Nigerian tertiary students and early-career professionals. Covers AI safety fundamentals, technical alignment, governance &amp; policy, and career pathways — with annotated reading lists, reflection exercises, and one-to-one application coaching for global fellowships.</p></div>
         <div class="prog-tag">Flagship · Free</div>
       </div>
       <div class="program-item fade-up">
         <div class="prog-number">02</div>
-        <div class="prog-content">
-          <h3>University Hub Network</h3>
-          <p>Campus-based AI safety hubs embedded inside Nigerian universities. Starting with 4–6 institutions in Year 1, each hub runs regular AI safety meetups, delivers local APEx cohorts, and functions as an access point for global programme applications. Led by trained student Hub Leads.</p>
-        </div>
+        <div class="prog-content"><h3>University Hub Network</h3><p>Campus-based AI safety hubs embedded inside Nigerian universities. Starting with 4–6 institutions in Year 1, each hub runs regular AI safety meetups, delivers local APEx cohorts, and functions as an access point for global programme applications. Led by trained student Hub Leads.</p></div>
         <div class="prog-tag">Field-Building</div>
       </div>
       <div class="program-item fade-up">
         <div class="prog-number">03</div>
-        <div class="prog-content">
-          <h3>Content &amp; Public Resources</h3>
-          <p>Weekly publications across four pillars: Global AI Watch, What We Are Reading, Education posts using Nigerian scenarios, and curated Opportunities (fellowships, internships). All freely available on Substack.</p>
-        </div>
+        <div class="prog-content"><h3>Content &amp; Public Resources</h3><p>Weekly publications across four pillars: Global AI Watch, What We Are Reading, Education posts using Nigerian scenarios, and curated Opportunities. All freely available on Substack.</p></div>
         <div class="prog-tag">Public · Free</div>
       </div>
       <div class="program-item fade-up">
         <div class="prog-number">04</div>
-        <div class="prog-content">
-          <h3>Events &amp; Community</h3>
-          <p>Virtual and in-person speaker sessions, fireside chats with global AI safety researchers, reading group convenings, and public seminars. Working toward Nigeria's first national AI safety hub convening.</p>
-        </div>
+        <div class="prog-content"><h3>Events &amp; Community</h3><p>Virtual and in-person speaker sessions, fireside chats with global AI safety researchers, reading group convenings, and public seminars. Working toward Nigeria's first national AI safety hub convening.</p></div>
         <div class="prog-tag">Community</div>
       </div>
       <div class="program-item fade-up">
         <div class="prog-number">05</div>
-        <div class="prog-content">
-          <h3>Global Partnership Development</h3>
-          <p>Building formal relationships with MATS, Anthropic Fellows Program, IAPS, Cambridge ERA:AI, ARENA, ML4Good and more. Hosting bootcamps in Nigeria and seeking dedicated opportunities and scholarships for hub members.</p>
-        </div>
+        <div class="prog-content"><h3>Global Partnership Development</h3><p>Building formal relationships with MATS, Anthropic Fellows Program, IAPS, Cambridge ERA:AI, ARENA, ML4Good and more. Hosting bootcamps in Nigeria and seeking dedicated opportunities and scholarships for hub members.</p></div>
         <div class="prog-tag">Partnerships</div>
       </div>
     </div>
@@ -453,7 +476,7 @@
       <div class="serve-card fade-up"><div class="serve-icon">🎓</div><h3>Tertiary Students</h3><p>STEM, social science, law, policy, and related fields who want to understand AI safety and explore it as a career.</p></div>
       <div class="serve-card fade-up"><div class="serve-icon">💼</div><h3>Early-Career Professionals</h3><p>Graduates and young professionals in their first few years of work considering a transition into AI safety or governance.</p></div>
       <div class="serve-card fade-up"><div class="serve-icon">🏛️</div><h3>Academics &amp; Faculty</h3><p>Lecturers and researchers wanting to understand AI safety and integrate it into their teaching or research.</p></div>
-      <div class="serve-card fade-up"><div class="serve-icon">⚖️</div><h3>Policymakers &amp; Civil Servants</h3><p>Nigerian government officials and public sector professionals making or influencing decisions about AI.</p></div>
+      <div class="serve-card fade-up"><div class="serve-icon">⚖️</div><h3>Policymakers &amp; Civil Servants</h3><p>Government officials and public sector professionals making or influencing decisions about AI.</p></div>
       <div class="serve-card fade-up"><div class="serve-icon">💻</div><h3>Technologists &amp; Practitioners</h3><p>Software engineers, data scientists, and AI developers who want to build more responsibly and safely.</p></div>
       <div class="serve-card fade-up"><div class="serve-icon">🌱</div><h3>Civil Society Organisations</h3><p>NGOs, advocacy groups, and community organisations engaging with technology and its effects on Nigerian society.</p></div>
     </div>
@@ -515,17 +538,13 @@
     <div class="team-grid">
       <div class="team-card featured fade-up">
         <div class="team-avatar" style="font-size:1.6rem;">⭐</div>
-        <div>
-          <div class="role">Executive Lead</div>
-          <h3>Executive Leadership</h3>
-          <p>Directs ASH Nigeria's overall strategy, vision, and operations. Responsible for setting organisational direction, building relationships with global AI safety organisations and funders, representing ASH Nigeria externally, and leading the organisation's long-term planning and African representation in global AI governance processes.</p>
-        </div>
+        <div><div class="role">Executive Lead</div><h3>Executive Leadership</h3><p>Directs ASH Nigeria's overall strategy, vision, and operations. Responsible for setting organisational direction, building relationships with global AI safety organisations and funders, representing ASH Nigeria externally, and leading the organisation's long-term planning and African representation in global AI governance processes.</p></div>
       </div>
       <div class="team-card fade-up"><div class="team-avatar">📣</div><div class="role">Communications &amp; Community Lead</div><h3>Communications &amp; Community</h3><p>Produces and publishes weekly content across all four pillars, manages LinkedIn, Substack, and Instagram, and grows and sustains the online community. Ensures ASH Nigeria's voice is consistent, intellectually serious, and accessible.</p></div>
       <div class="team-card fade-up"><div class="team-avatar">🔬</div><div class="role">Research &amp; Technical Lead</div><h3>Research &amp; Technical</h3><p>Curates and annotates APEx reading lists, produces technical paper explainers, maintains relationships with AI safety researchers globally, and ensures all educational content is accurate and rigorous.</p></div>
       <div class="team-card fade-up"><div class="team-avatar">📅</div><div class="role">Programmes &amp; Events Coordinator</div><h3>Programmes &amp; Events</h3><p>Responsible for delivering APEx cohorts, supporting university hub leads, organising speaker sessions and public events, managing participant experience, and working toward the national AI safety convening.</p></div>
-      <div class="team-card fade-up"><div class="team-avatar">⚖️</div><div class="role">Policy &amp; Advocacy Lead</div><h3>Policy &amp; Advocacy</h3><p>Tracks Nigerian and African AI policy developments, builds relationships with government institutions and civil society, develops ASH Nigeria's governance positions, and manages the organisation's path toward multilateral AI governance participation.</p></div>
-      <div class="team-card fade-up"><div class="team-avatar">⚙️</div><div class="role">Operations &amp; Finance Lead</div><h3>Operations &amp; Finance</h3><p>Ensures ASH Nigeria functions as a well-run, accountable organisation through financial management, administrative operations, compliance, record-keeping, and supporting the Executive Director with internal processes.</p></div>
+      <div class="team-card fade-up"><div class="team-avatar">⚖️</div><div class="role">Policy &amp; Advocacy Lead</div><h3>Policy &amp; Advocacy</h3><p>Tracks Nigerian and African AI policy developments, builds relationships with government institutions and civil society, develops ASH Nigeria's governance positions, and manages the path toward multilateral AI governance participation.</p></div>
+      <div class="team-card fade-up"><div class="team-avatar">⚙️</div><div class="role">Operations &amp; Finance Lead</div><h3>Operations &amp; Finance</h3><p>Ensures ASH Nigeria functions as a well-run, accountable organisation through financial management, administrative operations, compliance, record-keeping, and supporting internal processes.</p></div>
     </div>
   </div>
 </section>
@@ -565,7 +584,7 @@
       </div>
       <div class="contact-info">
         <div class="contact-item">✉ aisafetyhubng@gmail.com</div>
-        <div class="contact-item">📍 Lagos, Nigeria</div>
+        <div class="contact-item">📍 Nigeria</div>
         <div class="contact-item">📷 @aisafetyhubng</div>
       </div>
     </div>
@@ -575,7 +594,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
-    <div class="footer-copy">© 2025 AI Safety Hub Nigeria · Lagos, Nigeria · Building Africa's Pipeline into Global AI Safety</div>
+    <div class="footer-copy">© 2025 AI Safety Hub Nigeria · Building Africa's Pipeline into Global AI Safety</div>
     <ul class="footer-links">
       <li><a href="https://substack.com/@aisafetyhubnigeria" target="_blank">Newsletter</a></li>
       <li><a href="https://aisafetyhubng.github.io/apex-program" target="_blank">APEx</a></li>
@@ -586,18 +605,33 @@
 </footer>
 
 <script>
+  // Navbar scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 40);
   });
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileClose = document.getElementById('mobileClose');
-  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
-    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  // Dropdown nav
+  const dropBtn = document.getElementById('navDropdownBtn');
+  const dropMenu = document.getElementById('navDropdownMenu');
+  dropBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropMenu.classList.toggle('open');
+    dropBtn.classList.toggle('open', isOpen);
   });
+  // Close when clicking a link or outside
+  dropMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      dropMenu.classList.remove('open');
+      dropBtn.classList.remove('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    dropMenu.classList.remove('open');
+    dropBtn.classList.remove('open');
+  });
+
+  // Fade-up on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
